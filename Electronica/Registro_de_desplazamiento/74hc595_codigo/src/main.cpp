@@ -1,11 +1,11 @@
 //**************************************************************//
 //  Name    : 74HC595_CODIGO                                    //
 //  Author  : Lautaro Beutel                                    //
-//  Date    : 18, 05, 2020                                      //
+//  Date    : 18, 05, 2022                                      //
 //  Version : 1.0                                               //
 //  Notes   : Programa para desplegar un num del tipo byte      //
 //          : en un registro de desplazamiento                  //
-//****************************************************************
+//**************************************************************//
 #include <Arduino.h>
 
 #define SRL_DATA 2          //Data Out PIN
