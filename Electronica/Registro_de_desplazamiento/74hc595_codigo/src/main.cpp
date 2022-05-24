@@ -13,7 +13,7 @@
 #define LATCH_CLOCK 4       //Register ouput latch PIN
 
 void Escribir(byte DATA){       //Funcion para enviar info al 74hc595
-
+  
   
   shiftOut(SRL_DATA, SHIFT_CLOCK, LSBFIRST, DATA);
 
