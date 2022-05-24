@@ -8,15 +8,28 @@
 //**************************************************************//
 #include <Arduino.h>
 
-#define A_SRL_DATA_ 2
-#define A_SHIFT_CLOCK 3
-#define A_LATCH_CLOCK 4
 
-#define B_SRL_DATA 5
-#define B_SHIFT_CLOCK 6
-#define B_LATCH_CLOCK 7
+#define A_SRL_DATA 4
+#define A_SHIFT_CLOCK 2
+#define A_LATCH_CLOCK 3
 
+#define B_SRL_DATA 7
+#define B_SHIFT_CLOCK 5
+#define B_LATCH_CLOCK 6
 
+void Escribir(int pin_data, int pin_clock, int pin_latch, byte DATA){       //Funcion para enviar info al 74hc595
+
+  
+  shiftOut(pin_data, pin_clock, LSBFIRST, DATA);
+
+  digitalWrite(pin_latch, LOW);     //Latch para el registro de las salidas
+  digitalWrite(pin_latch, HIGH);
+  digitalWrite(pin_clock, LOW);
+}
+
+void LETRA_L(){
+
+}
 
 void setup() {
   pinMode(A_SRL_DATA, OUTPUT);      //declaracion de las salidas
@@ -29,5 +42,4 @@ void setup() {
 }
 
 void loop() {
-  
 }
