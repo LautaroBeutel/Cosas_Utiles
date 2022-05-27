@@ -20,6 +20,7 @@
 #define INICIO_DELAY 1000
 #define SALTO_DELAY 5
 
+//*********************************************** Mapas de bits para los caracteres ******************************************************//
 byte FILA[] = {B11111110, B11111101, B11111011, B11110111, B11101111, B11011111, B10111111, B01111111};
 byte X[] = {B10000001, B01000010, B00100100, B00011000, B00011000, B00100100, B01000010, B10000001};
 
@@ -44,9 +45,7 @@ byte Mensaje_datos[] = {
   B00000100,
   B00000000
 };
-
-int intervalo = 1000;
-unsigned int tiempo_1 = 0;
+//****************************************************************************************************************************************//
 
 void Escribir(int pin_data, int pin_clock, int pin_latch, byte DATA){       //Funcion para enviar info al 74hc595
 
@@ -58,7 +57,7 @@ void Escribir(int pin_data, int pin_clock, int pin_latch, byte DATA){       //Fu
   digitalWrite(pin_clock, LOW);
 }
 
-void Imprimir(byte Dato[], byte fila[]){
+void Imprimir(byte Dato[], byte fila[]){      //funcion que usar Escribir() para imprimir un caracter a la matriz
   for (int8_t i = 0; i <= 7 ; i++)
   {
     Escribir(A_SRL_DATA, A_SHIFT_CLOCK, A_LATCH_CLOCK, 0x00);
@@ -67,7 +66,6 @@ void Imprimir(byte Dato[], byte fila[]){
     Escribir(B_SRL_DATA, B_SHIFT_CLOCK, B_LATCH_CLOCK, fila[i]);
     //delay(SALTO_DELAY);
   }
-  
 }
 
 void setup() {
