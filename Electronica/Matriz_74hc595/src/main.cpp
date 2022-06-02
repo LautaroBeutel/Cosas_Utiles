@@ -21,30 +21,16 @@
 #define SALTO_DELAY 5
 
 //*********************************************** Mapas de bits para los caracteres ******************************************************//
-byte FILA[] = {B11111110, B11111101, B11111011, B11110111, B11101111, B11011111, B10111111, B01111111};
-byte X[] = {B10000001, B01000010, B00100100, B00011000, B00011000, B00100100, B01000010, B10000001};
+byte FILA[] = {0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe};
 
-byte Corazon_datos[] = {
-  B00000000,
-  B01100110,
-  B11111111,
-  B11111111,
-  B01111110,
-  B00111100,
-  B00011000,
-  B00000000
-};
+byte X_0[] = {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0};
+byte X_1[] = {0x0,0x0,0x0,0x18,0x18,0x0,0x0,0x0};
+byte X_2[] = {0x0,0x0,0x0,0x66,0x66,0x0,0x0,0x0};
+byte X_3[] = {0x0,0x18,0x18,0x0,0x0,0x66,0x66,0x0};
+byte X_4[] = {0x0,0x66,0x66,0x0,0x0,0x66,0x66,0x0};
+byte X_5[] = {0x0,0x66,0x66,0x18,0x18,0x66,0x66,0x0};
+byte X_6[] = {0xdb,0xdb,0x0,0xdb,0xdb,0x0,0xdb,0xdb};
 
-byte Mensaje_datos[] = {
-  B00000000,
-  B00000000,
-  B01010100,
-  B01110100,
-  B01010100,
-  B00000000,
-  B00000100,
-  B00000000
-};
 //****************************************************************************************************************************************//
 
 void Escribir(int pin_data, int pin_clock, int pin_latch, byte DATA){       //Funcion para enviar info al 74hc595
@@ -67,6 +53,7 @@ void Imprimir(byte Dato[], byte fila[]){      //funcion que usar Escribir() para
     //delay(SALTO_DELAY);
   }
 }
+  int num = 0;
 
 void setup() {
   pinMode(A_SRL_DATA, OUTPUT);      //declaracion de las salidas
@@ -81,8 +68,38 @@ void setup() {
   Escribir(B_SRL_DATA, B_SHIFT_CLOCK, B_LATCH_CLOCK, 0x00);
   delay(INICIO_DELAY);
 
+  pinMode(LED_BUILTIN, OUTPUT);
+
 }
 
+boolean bandera = 0;
+
+unsigned long tiempo;
+int intervalo = 100;
+
 void loop() {
-  Imprimir(X, FILA);
+  if (millis() - tiempo > intervalo)
+  {
+    tiempo = millis();
+    num = random(1, 6);
+  }
+  switch (num)
+  {
+  case 1: Imprimir(X_1, FILA);
+    break;
+  case 2: Imprimir(X_2, FILA);
+    break;
+  case 3: Imprimir(X_3, FILA);
+    break;
+  case 4: Imprimir(X_4, FILA);
+    break;
+  case 5: Imprimir(X_5, FILA);
+    break;
+  case 6: Imprimir(X_6, FILA);
+    break;
+  
+  default:
+    break;
+  }
+  
 }
