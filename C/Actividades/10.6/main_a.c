@@ -42,6 +42,7 @@
 
 
 int main(void){         //principio funcion main
+//ACTIVIDAD A
 #if defined(ACTIVIDAD_A)
     float u = 0.3;
     float v;
@@ -59,7 +60,7 @@ int main(void){         //principio funcion main
     printf("\n***************************************************");
 
 #endif
-
+//ACTIVIDAD B
 #if defined(ACTIVIDAD_B)
     double u = 0.3;
     double v;
@@ -74,7 +75,7 @@ int main(void){         //principio funcion main
     printf("\nu=%d\t&u=%p.\tpu=%p.\t*pu=%d", u, &u, pu, *pu);
     printf("\n\nv=%d\t&v=%p.\tpv=%p.\t*pv=%d", v, &v, pv, *pv);
 #endif
-
+//ACTIVIDAD C
 #if defined(ACTIVIDAD_C)
     char u = 67;
     char v;
@@ -89,5 +90,6 @@ int main(void){         //principio funcion main
     printf("\nu=%c\t&u=%p.\tpu=%p.\t*pu=%c", u, &u, pu, *pu);
     printf("\n\nv=%c\t&v=%p.\tpv=%p.\t*pv=%c", v, &v, pv, *pv);
 #endif
+
     return 0;           //finalizacion exitosa del codigo
 }//fin de de la funcion main
